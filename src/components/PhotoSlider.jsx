@@ -6,6 +6,8 @@ const images = ['img/p2.png', 'img/p3.jpg', 'img/p4.jpg'];
 export default function PhotoSlider() {
   const [index, setIndex] = useState(0);
   const intervalRef = useRef(null);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
 
   const nextSlide = () => setIndex((prev) => (prev + 1) % images.length);
   const prevSlide = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -21,11 +23,34 @@ export default function PhotoSlider() {
     intervalRef.current = setInterval(nextSlide, 5000);
   };
 
+  const handleTouchStart = (e) => setTouchStartX(e.touches[0].clientX);
+  const handleTouchMove = (e) => setTouchEndX(e.touches[0].clientX);
+  const handleTouchEnd = () => {
+    if (touchStartX !== null && touchEndX !== null) {
+      const distance = touchStartX - touchEndX;
+      const swipeThreshold = 50; 
+      if (distance > swipeThreshold) {
+        nextSlide();
+        resetTimer();
+      } else if (distance < -swipeThreshold) {
+        prevSlide();
+        resetTimer();
+      }
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   return (
     <section id="photos" className="image-slider section">
       <div className="container">
         <h2 className="section-title">Our Photos</h2>
-        <div className="slider-container">
+        <div
+          className="slider-container"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             className="slider"
             style={{ transform: `translateX(-${index * 100}%)` }}
@@ -59,7 +84,7 @@ export default function PhotoSlider() {
           {images.map((_, i) => (
             <button
               key={i}
-              className={i === index ? "active" : ""}
+              className={i === index ? 'active' : ''}
               onClick={() => {
                 goToSlide(i);
                 resetTimer();
