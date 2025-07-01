@@ -581,7 +581,8 @@
 @media (max-width: 720px) {
   .section {
     min-height: auto;
-    margin: 10px auto;
+    margin: 0px auto;
+    margin-top: 10px;
   }
 
 }
