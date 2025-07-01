@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
-import '../App.css';
+import React, { useEffect, useState, useRef } from "react";
+import "../App.css";
 
-const images = ['img/p2.png', 'img/p3.jpg', 'img/p4.jpg'];
+const images = ["img/p2.png", "img/p3.jpg", "img/p4.jpg"];
 
 export default function PhotoSlider() {
   const [index, setIndex] = useState(0);
@@ -10,7 +10,8 @@ export default function PhotoSlider() {
   const [touchEndX, setTouchEndX] = useState(null);
 
   const nextSlide = () => setIndex((prev) => (prev + 1) % images.length);
-  const prevSlide = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
+  const prevSlide = () =>
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
   const goToSlide = (i) => setIndex(i);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function PhotoSlider() {
   const handleTouchEnd = () => {
     if (touchStartX !== null && touchEndX !== null) {
       const distance = touchStartX - touchEndX;
-      const swipeThreshold = 50; 
+      const swipeThreshold = 50;
       if (distance > swipeThreshold) {
         nextSlide();
         resetTimer();
@@ -43,6 +44,7 @@ export default function PhotoSlider() {
 
   return (
     <section id="photos" className="image-slider section">
+      <div className="container">
         <h2 className="section-title">Our Photos</h2>
         <div
           className="slider-container"
@@ -83,7 +85,7 @@ export default function PhotoSlider() {
           {images.map((_, i) => (
             <button
               key={i}
-              className={i === index ? 'active' : ''}
+              className={i === index ? "active" : ""}
               onClick={() => {
                 goToSlide(i);
                 resetTimer();
@@ -91,6 +93,7 @@ export default function PhotoSlider() {
             />
           ))}
         </div>
+      </div>
     </section>
   );
 }

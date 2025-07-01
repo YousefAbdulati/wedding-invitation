@@ -161,7 +161,6 @@
   background: #f30353;
 }
 
-
 @keyframes softBounce {
   0%,
   100% {
@@ -579,6 +578,13 @@
     height: 8px;
   }
 }
+@media (max-width: 720px) {
+  .section {
+    min-height: auto;
+    margin: 50px auto;
+  }
+
+}
 
 .comment-form {
   display: flex;
@@ -693,7 +699,7 @@
   transform: translateX(-50%);
   background: #fff;
   color: #333;
-  padding: 10px 15px;
+  padding: 10px 20px;
   border-radius: 30px;
   font-size: 1rem;
   font-family: "Josefin Sans", sans-serif;
