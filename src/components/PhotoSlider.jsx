@@ -43,7 +43,6 @@ export default function PhotoSlider() {
 
   return (
     <section id="photos" className="image-slider section">
-      <div className="container">
         <h2 className="section-title">Our Photos</h2>
         <div
           className="slider-container"
@@ -92,7 +91,6 @@ export default function PhotoSlider() {
             />
           ))}
         </div>
-      </div>
     </section>
   );
 }

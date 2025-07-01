@@ -22,7 +22,7 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
-           Ahmed<span> Ethar</span>
+           Ahmed <span>& Ethar</span>
           </div>
 
           {/* Hamburger Icon */}
