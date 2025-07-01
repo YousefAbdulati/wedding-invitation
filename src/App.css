@@ -283,7 +283,7 @@
   overflow: hidden;
   width: 80%;
   max-width: 800px;
-  margin: 60px auto 0;
+  margin: 40px auto 0;
 }
 
 /* Slider Track */
@@ -581,7 +581,7 @@
 @media (max-width: 720px) {
   .section {
     min-height: auto;
-    margin: 30px auto;
+    margin: 10px auto;
   }
 
 }
